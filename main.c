@@ -50,7 +50,7 @@ Tkontakt Insert();
 Tgeb DateConvertFromString(char *str);
 
 /**
- *
+ * lol
  * @param str Ein langer String, bestehend aus Straße, hausnummer, PLZ, Ort
  * @return Adresse einer Person aufgeteilt in Straße Hausnummer PLZ Ort
  */
