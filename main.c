@@ -6,7 +6,6 @@
 #define MAXName 25
 #define MAXAdress 30
 #define MAXHausnummer 3
-#define MAXPlz 3
 
 typedef struct Geburtsdatum {
     int tag;
@@ -17,7 +16,7 @@ typedef struct Geburtsdatum {
 typedef struct Adresse {
     char strasse[MAXAdress];
     char Hausnummer[MAXHausnummer];
-    char PLZ[MAXPlz];
+    int PLZ;
     char Ort[MAXAdress];
 } Tadresse;
 
@@ -35,9 +34,9 @@ typedef struct Kontakt {
  * @return
  * 
  * last change 24.11 von Ismael
- * new:Name Vorname Spitzname und Geburtsdatum wird richtig eingelesesn
- * last change 25.11 von Huber
- * ZACK ZARAP
+ * new:Alle daten können eigelesen werden
+ * last change 25.11 von Ismael
+ * new: es können x beliebige Kontakte eingelesen werden
  */
 Tkontakt Insert();
 
@@ -49,18 +48,15 @@ Tkontakt Insert();
  */
 Tgeb DateConvertFromString(char *str);
 
-/**
- *
- * @param str Ein langer String, bestehend aus Straße, hausnummer, PLZ, Ort
- * @return Adresse einer Person aufgeteilt in Straße Hausnummer PLZ Ort
- */
-Tadresse AdressConvertFromString(char *str);
 
 int main() {
     Tkontakt Kontake[MAXkontakte];
-    printf("");
+    short counter = -1;
+    do {
+        counter++;
+        Kontake[counter] = Insert();
+    } while (strcmp(Kontake[counter].vorname,"exit"));
 
-    Insert();
 
     return 0;
 }
@@ -69,12 +65,15 @@ int main() {
 Tkontakt Insert() {
     Tkontakt person;
     char scanner[MAXName * 2];
-    char speicher[MAXName];
 
     printf("Vor- und Nachname:");
     gets(scanner);
+    if (!strcmp(scanner, "exit")) {
+        strcpy(person.vorname, strtok(scanner, " "));
+        return person;
+    }
     strcpy(person.vorname, strtok(scanner, " "));
-    strcpy(person.nachnahme, &scanner[strlen(person.vorname) + 1]);
+    strcpy(person.nachnahme, strtok(NULL, " "));
 
     printf("Spitzname:");
     gets(person.spitzname);
@@ -83,9 +82,17 @@ Tkontakt Insert() {
     gets(scanner);
     person.geburtstag = DateConvertFromString(scanner);
 
-    printf("Adresse");
+    printf("Straße und Huasnummer");
     gets(scanner);
+    strcpy(person.adresse.strasse, strtok(scanner, " "));
+    strcpy(person.adresse.Hausnummer, strtok(NULL, " "));
 
+    printf("PLZ:");
+    gets(scanner);
+    person.adresse.PLZ = atoi(scanner);
+
+    printf("Ort:");
+    gets(person.adresse.Ort);
     return person;
 }
 
