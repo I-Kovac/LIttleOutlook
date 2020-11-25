@@ -10,7 +10,7 @@
 typedef struct Geburtsdatum {
     int tag;
     int monat;
-    int jahr;     // hier unbedingt mit int arbeiten sonst wird vergleichen schwierig
+    int jahr;
 } Tgeb;
 
 typedef struct Adresse {
