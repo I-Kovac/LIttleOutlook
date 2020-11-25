@@ -36,6 +36,8 @@ typedef struct Kontakt {
  * 
  * last change 24.11 von Ismael
  * new:Name Vorname Spitzname und Geburtsdatum wird richtig eingelesesn
+ * last change 25.11 von Huber
+ * ZACK ZARAP
  */
 Tkontakt Insert();
 
