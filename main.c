@@ -26,6 +26,8 @@ typedef struct Kontakt {
     char spitzname[MAXName / 2];
     Tgeb geburtstag;
     Tadresse adresse;
+    char email[MAXAdress];
+    char telefon[MAXAdress];
 } Tkontakt;
 
 /**
@@ -93,6 +95,12 @@ Tkontakt Insert() {
 
     printf("Ort:");
     gets(person.adresse.Ort);
+
+    printf("E-Mail:");
+    gets(person.email);
+
+    printf("Telefon:");
+    gets(person.telefon);
     return person;
 }
 
