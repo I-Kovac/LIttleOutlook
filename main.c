@@ -9,6 +9,15 @@
 #define TRUE 1
 #define FALSE 0
 
+#define MEN_NEW_CONTACT 1
+#define MEN_MORE_NEW_CONTACTS 2
+#define MEN_DEL_CONTACT 3
+#define MEN_EDIT_CONTACT 4
+#define MEN_SHOW_CONTACT 5
+#define MEN_SHOW_ALL_CONTACTS 6
+#define MEN_SEARCH_COTACT 7
+#define MEN_NEXT_BIRTHDAY 8
+#define MEN_ALL_MONTH_BIRTHDAYS 9
 typedef struct Geburtsdatum {
     int tag;
     int monat;
@@ -67,23 +76,23 @@ int main() {
         auswahl = Menu();
         if (auswahl == 0) {
             ende = TRUE;
-        } else if (auswahl == 1) {
+        } else if (auswahl == MEN_NEW_CONTACT) {
 
-        } else if (auswahl == 2) {
+        } else if (auswahl == MEN_MORE_NEW_CONTACTS) {
 
-        } else if (auswahl == 3) {
+        } else if (auswahl == MEN_DEL_CONTACT) {
 
-        } else if (auswahl == 4) {
+        } else if (auswahl == MEN_EDIT_CONTACT) {
 
-        } else if (auswahl == 5) {
+        } else if (auswahl == MEN_SHOW_CONTACT) {
 
-        } else if (auswahl == 6) {
+        } else if (auswahl == MEN_SHOW_ALL_CONTACTS) {
 
-        } else if (auswahl == 7) {
+        } else if (auswahl == MEN_SEARCH_COTACT) {
 
-        } else if (auswahl == 8) {
+        } else if (auswahl == MEN_NEXT_BIRTHDAY) {
 
-        } else if (auswahl == 9) {
+        } else if (auswahl == MEN_ALL_MONTH_BIRTHDAYS) {
 
         }
     } while (ende != TRUE);
@@ -98,15 +107,16 @@ int Menu() {
         printf("Willkommen zu LittleOutlook!\n"
                "Wählen Sie aus:\n"
                "[0]Beenden"
-               "[1]Kontakt erstellen\n"
-               "[2]Mehrere Kontakte erstellen\n"
-               "[3]Kontakt löschen\n"
-               "[4]Kontakt bearbeiten\n"
-               "[5]Kontakt anzeigen\n"
-               "[6]Alle Kontakte anzeigen\n"
-               "[7]Kontakt suchen\n"
-               "[8]Den nächsten Geburtstag ausgeben\n"
-               "[9]Alle Geburtstage in einem Monat ausgeben\n");
+               "[%d]Kontakt erstellen\n"
+               "[%d]Mehrere Kontakte erstellen\n"
+               "[%d]Kontakt löschen\n"
+               "[%d]Kontakt bearbeiten\n"
+               "[%d]Kontakt anzeigen\n"
+               "[%d]Alle Kontakte anzeigen\n"
+               "[%d]Kontakt suchen\n"
+               "[%d]Den nächsten Geburtstag ausgeben\n"
+               "[%d]Alle Geburtstage in einem Monat ausgeben\n", MEN_NEW_CONTACT, MEN_MORE_NEW_CONTACTS, MEN_DEL_CONTACT,
+               MEN_EDIT_CONTACT, MEN_SHOW_CONTACT, MEN_SHOW_ALL_CONTACTS, MEN_SEARCH_COTACT, MEN_NEXT_BIRTHDAY, MEN_ALL_MONTH_BIRTHDAYS);
 
         printf("\nAuswahl: ");
         scanf("%d", &auswahl);
