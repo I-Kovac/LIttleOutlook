@@ -34,7 +34,7 @@ typedef struct Kontakt {
  * Liest alle Daten zu einem Kontakt von der console ein
  * @author: Huber, Constantin und Ismael
  * @return
- * 
+ *
  * last change 24.11 von Ismael
  * new:Alle daten können eigelesen werden
  * last change 25.11 von Ismael
@@ -46,10 +46,9 @@ Tkontakt Insert();
  * @author Ismael
  * @param str  ein Datum im Format tt.mm.jjjj
  * @return ein gültiges Datum, wenn das Format falsch ist wird 00.00.0000 zurückgegeben
- * 
+ *
  */
 Tgeb DateConvertFromString(char *str);
-
 
 int main() {
     Tkontakt Kontake[MAXkontakte];
@@ -57,18 +56,14 @@ int main() {
     do {
         counter++;
         Kontake[counter] = Insert();
-    } while (strcmp(Kontake[counter].vorname,"exit"));
-
-
+    } while (strcmp(Kontake[counter].vorname, "exit"));
     return 0;
 }
-
 
 Tkontakt Insert() {
     Tkontakt person;
     char scanner[MAXName * 2];
-
-    printf("Vor- und Nachname:");
+    printf("Vor- und Nachname: ");
     gets(scanner);
     if (!strcmp(scanner, "exit")) {
         strcpy(person.vorname, strtok(scanner, " "));
@@ -76,30 +71,26 @@ Tkontakt Insert() {
     }
     strcpy(person.vorname, strtok(scanner, " "));
     strcpy(person.nachnahme, strtok(NULL, " "));
-
-    printf("Spitzname:");
+    printf("Spitzname: ");
     gets(person.spitzname);
-
-    printf("Gebusrtsdatum (tt.mm.jjjj):");
+    printf("Gebusrtsdatum (tt.mm.jjjj): ");
     gets(scanner);
     person.geburtstag = DateConvertFromString(scanner);
-
-    printf("Straße und Huasnummer");
+    printf("Straße und Huasnummer: ");
     gets(scanner);
     strcpy(person.adresse.strasse, strtok(scanner, " "));
     strcpy(person.adresse.Hausnummer, strtok(NULL, " "));
-
     printf("PLZ:");
     gets(scanner);
     person.adresse.PLZ = atoi(scanner);
 
-    printf("Ort:");
+    printf("Ort: ");
     gets(person.adresse.Ort);
 
-    printf("E-Mail:");
+    printf("E-Mail: ");
     gets(person.email);
 
-    printf("Telefon:");
+    printf("Telefon: ");
     gets(person.telefon);
     return person;
 }
@@ -115,7 +106,5 @@ Tgeb DateConvertFromString(char *str) {
         person.monat = 00;
         person.jahr = 0000;
     }
-
-
     return person;
 }
