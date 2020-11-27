@@ -6,6 +6,8 @@
 #define MAXName 25
 #define MAXAdress 30
 #define MAXHausnummer 3
+#define TRUE 1
+#define FALSE 0
 
 typedef struct Geburtsdatum {
     int tag;
@@ -31,6 +33,12 @@ typedef struct Kontakt {
 } Tkontakt;
 
 /**
+ * Menü in dem man die Funktion die man ausführen will auswählen kann.
+ * @return... Auswahl der Funktion
+ */
+int Menu();
+
+/**
  * Liest alle Daten zu einem Kontakt von der console ein
  * @author: Huber, Constantin und Ismael
  * @return
@@ -52,12 +60,60 @@ Tgeb DateConvertFromString(char *str);
 
 int main() {
     Tkontakt Kontake[MAXkontakte];
-    short counter = -1;
+    int auswahl;
+    int ende = FALSE;
+
     do {
-        counter++;
-        Kontake[counter] = Insert();
-    } while (strcmp(Kontake[counter].vorname, "exit"));
+        auswahl = Menu();
+        if (auswahl == 0) {
+            ende = TRUE;
+        } else if (auswahl == 1) {
+
+        } else if (auswahl == 2) {
+
+        } else if (auswahl == 3) {
+
+        } else if (auswahl == 4) {
+
+        } else if (auswahl == 5) {
+
+        } else if (auswahl == 6) {
+
+        } else if (auswahl == 7) {
+
+        } else if (auswahl == 8) {
+
+        } else if (auswahl == 9) {
+
+        }
+    } while (ende != TRUE);
+
     return 0;
+}
+
+int Menu() {
+    int auswahl;
+
+    do {
+        printf("Willkommen zu LittleOutlook!\n"
+               "Wählen Sie aus:\n"
+               "[0]Beenden"
+               "[1]Kontakt erstellen\n"
+               "[2]Mehrere Kontakte erstellen\n"
+               "[3]Kontakt löschen\n"
+               "[4]Kontakt bearbeiten\n"
+               "[5]Kontakt anzeigen\n"
+               "[6]Alle Kontakte anzeigen\n"
+               "[7]Kontakt suchen\n"
+               "[8]Den nächsten Geburtstag ausgeben\n"
+               "[9]Alle Geburtstage in einem Monat ausgeben\n");
+
+        printf("\nAuswahl: ");
+        scanf("%d", &auswahl);
+
+    } while (auswahl < 0 || auswahl > 9);
+
+    return auswahl;
 }
 
 Tkontakt Insert() {
