@@ -71,17 +71,22 @@ int main() {
     Tkontakt kontakte[MAXkontakte];
     int auswahl;
     int ende = FALSE;
-    int counter = 0;
+    int counterinsert = 0;
 
     do {
         auswahl = Menu();
         if (auswahl == 0) {
             ende = TRUE;
         } else if (auswahl == MEN_NEW_CONTACT) {
-
-            Insert(kontakte[counter]);
+            Insert(kontakte[counterinsert]);
+            counterinsert++;
         } else if (auswahl == MEN_MORE_NEW_CONTACTS) {
-
+            printf("Sie können nun so viele Kontakte wie Sie wollen einlesen. Um die Eingabe zu stoppen bitte \"exit\"\n"
+                   "als Vornamen eingeben!\n");
+            do{
+                Insert(kontakte[counterinsert]);
+                counterinsert++;
+            }while(strcmp(kontakte[counterinsert].vorname, "exit") != 0);
         } else if (auswahl == MEN_DEL_CONTACT) {
 
         } else if (auswahl == MEN_EDIT_CONTACT) {
