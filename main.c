@@ -8,7 +8,6 @@
 #define MAXHausnummer 3
 #define TRUE 1
 #define FALSE 0
-
 #define MEN_NEW_CONTACT 1
 #define MEN_MORE_NEW_CONTACTS 2
 #define MEN_DEL_CONTACT 3
@@ -18,6 +17,7 @@
 #define MEN_SEARCH_COTACT 7
 #define MEN_NEXT_BIRTHDAY 8
 #define MEN_ALL_MONTH_BIRTHDAYS 9
+
 typedef struct Geburtsdatum {
     int tag;
     int monat;
