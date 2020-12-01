@@ -68,9 +68,10 @@ Tkontakt Insert();
 Tgeb DateConvertFromString(char *str);
 
 int main() {
-    Tkontakt Kontake[MAXkontakte];
+    Tkontakt kontakte[MAXkontakte];
     int auswahl;
     int ende = FALSE;
+    int counter = 0;
 
     do {
         auswahl = Menu();
@@ -78,6 +79,7 @@ int main() {
             ende = TRUE;
         } else if (auswahl == MEN_NEW_CONTACT) {
 
+            Insert(kontakte[counter]);
         } else if (auswahl == MEN_MORE_NEW_CONTACTS) {
 
         } else if (auswahl == MEN_DEL_CONTACT) {
