@@ -78,13 +78,13 @@ int main() {
         if (auswahl == 0) {
             ende = TRUE;
         } else if (auswahl == MEN_NEW_CONTACT) {
-            Insert(kontakte[counterinsert]);
+           kontakte[counterinsert] = Insert();
             counterinsert++;
         } else if (auswahl == MEN_MORE_NEW_CONTACTS) {
             printf("Sie können nun so viele Kontakte wie Sie wollen einlesen. Um die Eingabe zu stoppen bitte \"exit\"\n"
                    "als Vornamen eingeben!\n");
             do{
-                Insert(kontakte[counterinsert]);
+                kontakte[counterinsert] = Insert();
                 counterinsert++;
             }while(strcmp(kontakte[counterinsert].vorname, "exit") != 0);
         } else if (auswahl == MEN_DEL_CONTACT) {
@@ -113,7 +113,7 @@ int Menu() {
     do {
         printf("Willkommen zu LittleOutlook!\n"
                "Wählen Sie aus:\n"
-               "[0]Beenden"
+               "[0]Beenden\n"
                "[%d]Kontakt erstellen\n"
                "[%d]Mehrere Kontakte erstellen\n"
                "[%d]Kontakt löschen\n"
