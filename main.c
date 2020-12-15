@@ -58,6 +58,11 @@ int Menu();
  * new: es können x beliebige Kontakte eingelesen werden
  */
 Tkontakt Insert();
+/**
+ * @author Constantin
+ * @param Der zu löschende Kontakt
+ */
+void del(Tkontakt *pkontakt);
 
 /**
  * @author Ismael
@@ -72,6 +77,8 @@ int main() {
     int auswahl;
     int ende = FALSE;
     int counterinsert = 0;
+    int hobn = FALSE;
+    int counter=0;
 
     do {
         auswahl = Menu();
@@ -89,6 +96,18 @@ int main() {
             }while(strcmp(kontakte[counterinsert-1].vorname, "exit") != 0);
             counterinsert--;
         } else if (auswahl == MEN_DEL_CONTACT) {
+            printf("Welchen Kontakt möchten Sie löschen");
+            scanf(" %s", kontakte->vorname);
+            scanf(" %s", kontakte->nachname);
+            while (hobn == FALSE) {
+                if ((strcmp(kontakte[counter].vorname, kontakte->vorname) == FALSE) &&
+                    (strcmp(kontakte[counter].nachname, kontakte->nachname) == FALSE)) {
+                    hobn = TRUE;
+                } else {
+                    counter++;
+                }
+                del(&kontakte[counter]);
+            }
 
         } else if (auswahl == MEN_EDIT_CONTACT) {
 
@@ -179,4 +198,19 @@ Tgeb DateConvertFromString(char *str) {
         person.jahr = 0000;
     }
     return person;
+}
+
+void del(Tkontakt *pkontakt) {
+    strcpy(pkontakt->vorname, "0");
+    strcpy(pkontakt->nachname, "0");
+    strcpy(pkontakt->spitzname, "0");
+    pkontakt->geburtstag.tag=0;
+    pkontakt->geburtstag.monat=0;
+    pkontakt->geburtstag.jahr=0;
+    strcpy(pkontakt->adresse.strasse, "0");
+    strcpy(pkontakt->adresse.Hausnummer, "0");
+    pkontakt->adresse.PLZ=0;
+    strcpy(pkontakt->adresse.Ort, "0");
+    strcpy(pkontakt->email, "0");
+    strcpy(pkontakt->telefon, "0");
 }
