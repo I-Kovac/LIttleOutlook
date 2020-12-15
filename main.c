@@ -33,7 +33,7 @@ typedef struct Adresse {
 
 typedef struct Kontakt {
     char vorname[MAXName];
-    char nachnahme[MAXName];
+    char nachname[MAXName];
     char spitzname[MAXName / 2];
     Tgeb geburtstag;
     Tadresse adresse;
@@ -86,7 +86,8 @@ int main() {
             do{
                 kontakte[counterinsert] = Insert();
                 counterinsert++;
-            }while(strcmp(kontakte[counterinsert].vorname, "exit") != 0);
+            }while(strcmp(kontakte[counterinsert-1].vorname, "exit") != 0);
+            counterinsert--;
         } else if (auswahl == MEN_DEL_CONTACT) {
 
         } else if (auswahl == MEN_EDIT_CONTACT) {
@@ -136,35 +137,33 @@ int Menu() {
 Tkontakt Insert() {
     Tkontakt person;
     char scanner[MAXName * 2];
-    printf("Vor- und Nachname: ");
-    gets(scanner);
-    if (!strcmp(scanner, "exit")) {
-        strcpy(person.vorname, strtok(scanner, " "));
+    printf("Vorname: ");
+    scanf(" %s", person.vorname);
+    if (!strcmp(person.vorname, "exit")) {
         return person;
     }
-    strcpy(person.vorname, strtok(scanner, " "));
-    strcpy(person.nachnahme, strtok(NULL, " "));
+    printf("Nachname: ");
+    scanf(" %s", person.nachname);
     printf("Spitzname: ");
-    gets(person.spitzname);
+    scanf(" %s", person.spitzname);
     printf("Gebusrtsdatum (tt.mm.jjjj): ");
-    gets(scanner);
+    scanf(" %s", scanner);
     person.geburtstag = DateConvertFromString(scanner);
-    printf("Straße und Huasnummer: ");
-    gets(scanner);
-    strcpy(person.adresse.strasse, strtok(scanner, " "));
-    strcpy(person.adresse.Hausnummer, strtok(NULL, " "));
+    printf("Straße: ");
+    scanf(" %s", person.adresse.strasse);
+    printf("Hausnummer: ");
+    scanf(" %s", person.adresse.Hausnummer);
     printf("PLZ:");
-    gets(scanner);
-    person.adresse.PLZ = atoi(scanner);
+    scanf("%d", &person.adresse.PLZ);
 
     printf("Ort: ");
-    gets(person.adresse.Ort);
+    scanf(" %s", person.adresse.Ort);
 
     printf("E-Mail: ");
-    gets(person.email);
+    scanf(" %s", person.email);
 
     printf("Telefon: ");
-    gets(person.telefon);
+    scanf(" %s", person.telefon);
     return person;
 }
 
